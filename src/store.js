@@ -1,9 +1,5 @@
 import {createStore} from 'redux';
 
-// savedChanges() {
-
-// }
-
 //INITIAL REDUX STATE PROPERTIES 
 const initialState = {
     name:'',
@@ -15,7 +11,7 @@ const initialState = {
     recipes: []
 };
 
-//ACTION TYPES
+//ACTION TYPES (CONSTANTS)
 export const UPDATE_NAME = 'UPDATE_NAME';
 export const UPDATE_CATEGORY = 'UPDATE_CATEGORY';
 export const UPDATE_AUTHOR_FIRST = 'UPDATE_AUTHOR_FIRST';
@@ -24,7 +20,7 @@ export const ADD_INGREDIENT = 'ADD_INGREDIENT';
 export const ADD_INSTRUCTION = 'ADD_INSTRUCTION';
 export const ADD_RECIPE = 'ADD_RECIPE';
 
-//SWITCH OF REDUCER
+//SWITCH OF REDUCER (FUNCTION REDUCER)
 function reducer(state = initialState, action) {
    const {type, payload} = action;
    switch (type) {
@@ -62,6 +58,7 @@ function reducer(state = initialState, action) {
             ingredients,
             instructions
         } = state;
+
         const recipe = {
             name,
             category,
@@ -70,7 +67,7 @@ function reducer(state = initialState, action) {
             ingredients,
             instructions
         };
-        const newRecipes = [...state.recipes.recipe];
+        const newRecipes = [...state.recipes,recipe];
         return {...state, recipes: newRecipes}
    }
 }
